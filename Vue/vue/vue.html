@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <!--
+        虚拟dom
+        指令、过滤器、组件化
+            1.当做具有特殊功能的 属性
+            2.vue提供的一种弥补html缺陷的一种方式
+
+        methods     调用的时候必须有()、会重新渲染页面
+        computed    调用的时候不需要()、不会重新渲染
+            -->
+    <div id="box">
+        <custom :con="con" :age="age"></custom>
+    </div>
+    <script>
+        /*全局的组件
+        * function a(){
+        *
+        *   }
+        *       完善的组件
+        *   结构  逻辑  数据
+        *
+        *   单向数据流
+        *           数据流动方向：外层->里层
+        *           双向数据绑定
+        *           外层不可以访问里层
+        *           里层可以访问外层
+        * */
+        Vue.component("custom",{
+            props:["con","age"],
+            template:`<div @click="change()">{{ name }}{{age}}</div>`,
+            data(){
+                return {
+                    name:this.con,
+                    age:this.age
+                }
+            },
+            methods:{
+                change(){
+                    this.name="lisi";
+                }
+            }
+        })
+        var box = new Vue({
+            el:"#box",
+            data:{
+                con:"zhangsan",
+                age:12
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>select</title>
+    <link rel="stylesheet" href="app.css">
+    <script src="../vue.js"></script>
+    <script src="component.js"></script>
+</head>
+<body>
+    <div id="box">
+        <div class="select-box">
+            <custom-input @customevent="aa" :title="title"></custom-input>
+            <custom-list :list-data="datas" :state="state" @customevent="bb"></custom-list>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
